@@ -1,0 +1,104 @@
+theme = "custom_mocha"
+# theme = "everforest_dark"
+
+
+### EDITOR ### https://docs.helix-editor.com/editor.html
+
+[editor]
+middle-click-paste = true
+end-of-line-diagnostics = "hint"
+true-color = true # doesn't make any difference for Windows Terminal
+
+[editor.lsp]
+display-messages = true # show LSP progress messages
+display-inlay-hints = true # show inlay hints like in graphical editors
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+
+[editor.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+"'" = "'"
+'"' = '"'
+'`' = '`'
+'<' = '>' # added this one
+
+[editor.whitespace.render]
+# space    = "all"
+tab      = "all"
+nbsp     = "all"
+nnbsp    = "all"
+# newline  = "all"
+[editor.whitespace.characters]
+space = "·"
+nbsp = "⍽"
+nnbsp = "␣"
+tab = "→"
+newline = "⏎"
+tabpad = "·" # Tabs will look like "→···" (depending on tab width)
+
+[editor.indent-guides]
+render = true
+character = "┆" # Some characters that work well: "▏", "┆", "┊", "⸽"
+skip-levels = 0
+
+[editor.soft-wrap]
+enable = true
+max-wrap = 25 # increase how long a word has to be before getting split up, mostly doesn't matter
+# wrap-indicator = "-" # this defaults to `↪`
+# wrap-at-text-width = true # wrap width also includes unformatted inlay hints, does not make sense to see
+
+[editor.inline-diagnostics]
+cursor-line = "warning"
+other-lines = "error"
+
+
+### KEYMAPPING ### https://docs.helix-editor.com/remapping.html
+
+# there seems to be no reason to use quotes for most characters/keys
+[keys.normal]
+C-A-r = ":config-reload" # ctrl+alt+r
+C-c = ":clipboard-yank"
+C-s = ":w" # save file on ctrl+s
+C-S = "save_selection" # jump list ctrl+s into a ctrl+shift+s bind ("save selection to jump list")
+F2 = "rename_symbol"
+"C-'" = "toggle_comments"
+"C-=" = ":fmt" # format file (`=` formats selection)
+
+tab = "move_parent_node_end" # extend smart tab functionality
+S-tab = "move_parent_node_start"
+
+#esc = "collapse_selection" # esc can deselect, same as `;`
+# note: collapsing selection still keeps multiple cursors (removed with `,`)
+
+[keys.normal."space"]
+# a way of opening neighbooring files, no matter where hx was opened from
+o = "file_picker_in_current_buffer_directory"
+
+[keys.normal."space".w]
+e = "rotate_view_reverse" # instead of `w` (rotate_view), rotate backwards
+
+
+[keys.insert]
+C-A-r = ":config-reload" # ctrl+alt+r
+C-s = ":w" # save file on ctrl+s
+F2 = "rename_symbol"
+"C-'" = "toggle_comments"
+"C-=" = ":fmt" # format file (`=` formats selection)
+
+S-tab = "move_parent_node_start" # extend smart tab functionality
+
+# more potential here: look at the "minor" modes.
+# you can create arbitrary modes from binds even from insideinsert mode.
+
+[keys.select]
+tab = "extend_parent_node_end" # extend smart tab functionality
+S-tab = "extend_parent_node_start"
+

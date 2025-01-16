@@ -1,0 +1,73 @@
+
+### RUST ###
+
+[[language]]
+name = "rust"
+
+[language.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+"'" = "'"
+'"' = '"'
+'`' = '`'
+'<' = '>' # added these last two
+'|' = '|' # pipes exclusive to rust: used for closures
+
+[language-server.rust-analyzer.config.check]
+command = "clippy"
+
+
+### TYPST ###
+
+[[language]]
+name = "typst"
+language-servers = ["tinymist"] # https://myriad-dreamin.github.io/tinymist//frontend/helix.html
+
+[language-server.tinymist] # https://github.com/Myriad-Dreamin/tinymist/blob/main/editors/neovim/Configuration.md
+command = "tinymist"
+
+# this only works for certain projects:
+[language-server.tinymist.config]
+typstExtraArgs = ["main.typ"]
+
+
+### Nix ###
+[[language]]
+name = "nix"
+formatter = { command = "nixpkgs-fmt" }
+
+
+### PYTHON ###
+
+[[language]]
+name = "python"
+language-servers = [ "basedpyright", "ruff", "pylyzer" ] 
+auto-format = true
+
+[language-server.pyright.config.python.analysis]
+typeCheckingMode = "basic"
+[language-server.ruff] # https://github.com/astral-sh/ruff, https://github.com/helix-editor/helix/wiki/Language-Server-Configurations#ruff
+command = "ruff"
+args = ["server"] # this could maybe have been implicit with `ruff-lsp` but the general tool is probably better
+[language-server.pylyzer]
+command = "pylyzer"
+args = ["--server"]
+
+
+### POWERSHELL ###
+
+[[language]]
+name = "powershell"
+scope = "source.ps1"
+file-types = ["ps1", "psm1"]
+roots = [".git"]
+comment-token = "#"
+indent = { tab-width = 4, unit = "    " }
+language-servers = [ "powershell-editor-services" ]
+
+[language-server.powershell-editor-services]
+command = "pwsh"
+args = ["-NoLogo", "-NoProfile", "-Command",
+  "F:\\tools\\PowerShellEditorServices\\PowerShellEditorServices\\Start-EditorServices.ps1 -BundledModulesPath F:\\tools\\PowerShellEditorServices -SessionDetailsPath F:\\tools\\PowerShellEditorServices\\PowerShellEditorServices.sessions.json -LogPath F:\\tools\\PowerShellEditorServices\\PowerShellEditorServices.log -FeatureFlags @() -AdditionalModules @() -HostName helix -HostProfileId 0 -HostVersion 1.0.0 -Stdio -LogLevel Normal"
+]
