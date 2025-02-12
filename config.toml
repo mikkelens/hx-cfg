@@ -8,6 +8,8 @@ theme = "custom_mocha"
 middle-click-paste = true
 end-of-line-diagnostics = "hint"
 true-color = true # doesn't make any difference for Windows Terminal
+#shell = ["pwsh", "-c"] # pwsh is slow
+shell = ["bash", "-c"] # WSL can be pretty fast
 
 [editor.lsp]
 display-messages = true # show LSP progress messages
@@ -21,14 +23,14 @@ select = "underline"
 [editor.file-picker]
 hidden = false
 
-[editor.auto-pairs]
-'(' = ')'
-'{' = '}'
-'[' = ']'
-"'" = "'"
-'"' = '"'
-'`' = '`'
-'<' = '>' # added this one
+# [editor.auto-pairs]
+# '(' = ')'
+# '{' = '}'
+# '[' = ']'
+# "'" = "'"
+# '"' = '"'
+# '`' = '`'
+# '<' = '>' # added this one
 
 [editor.whitespace.render]
 # space    = "all"
@@ -71,6 +73,7 @@ C-S = "save_selection" # jump list ctrl+s into a ctrl+shift+s bind ("save select
 F2 = "rename_symbol"
 "C-'" = "toggle_comments"
 "C-=" = ":fmt" # format file (`=` formats selection)
+"A-:" = ":sh"
 
 tab = "move_parent_node_end" # extend smart tab functionality
 S-tab = "move_parent_node_start"
@@ -99,6 +102,8 @@ S-tab = "move_parent_node_start" # extend smart tab functionality
 # you can create arbitrary modes from binds even from insideinsert mode.
 
 [keys.select]
+"C-'" = "toggle_comments"
+"C-=" = ":fmt" # format file (`=` formats selection)
+
 tab = "extend_parent_node_end" # extend smart tab functionality
 S-tab = "extend_parent_node_start"
-
