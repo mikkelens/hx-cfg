@@ -31,8 +31,14 @@ runInTerminal = true
 # '<' = '>' # added these last two
 # '|' = '|' # pipes exclusive to rust: used for closures
 
-[language-server.rust-analyzer.config.check]
-command = "clippy"
+[language-server.rust-analyzer.config]
+check = { command = "clippy" }
+# RA ignores server macro modifications, interpret as normal rust
+procMacro = { ignored = { leptos_macro = [
+    # Optional:
+    #     # "component",
+    "server"
+] } }
 
 
 ### TYPST ###

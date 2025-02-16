@@ -1,3 +1,3 @@
 inherits = "catppuccin_mocha"
-# todo: add more! https://docs.helix-editor.com/themes.html#inheritance
-# see rustrover config
+# todo: add more override! https://docs.helix-editor.com/themes.html#inheritance
+# see rustrover config for inspiration
